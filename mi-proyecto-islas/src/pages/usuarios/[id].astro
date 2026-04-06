@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// 1. Obtener el ID de la URL
+const { id } = Astro.params;
+
+// 2. Hacer el fetch específico a tu API REST
+let user = null;
+try {
+  const response = await fetch(`http://localhost:3000/api/users/${id}`);
+  if (response.ok) {
+    user = await response.json();
+  }
+} catch (error) {
+  console.error("Error al obtener el usuario:", error);
+}
+---
+
+<BaseLayout title={user ? `Perfil de ${user.name}` : "Usuario no encontrado"}>
+  <a href="/">← Volver al listado</a>
+
+  {user ? (
+    <article class="profile-card">
+      <h1>Perfil del Usuario</h1>
+      <div class="detail">
+        <p><strong>ID:</strong> {user.id}</p>
+        <p><strong>Nombre:</strong> {user.name}</p>
+        <p><strong>Email:</strong> {user.email}</p>
+      </div>
+      
+      {/* Aquí podrías insertar otra ISLA si quisieras un formulario de edición */}
+      <button class="edit-btn">Editar Perfil (Estático)</button>
+    </article>
+  ) : (
+    <div class="error">
+      <h1>404</h1>
+      <p>Lo sentimos, el usuario con ID {id} no existe.</p>
+    </div>
+  )}
+</BaseLayout>
+
+<style>
+  .profile-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 1rem;
+  }
+  .detail p { font-size: 1.2rem; line-height: 1.6; }
+  .edit-btn { background: #333; color: white; padding: 0.8rem; border: none; cursor: pointer; }
+  .error { text-align: center; color: red; }
+</style>

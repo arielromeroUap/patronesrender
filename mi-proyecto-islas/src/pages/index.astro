@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import UserCard from '../components/UserCard.jsx';
+
+// 1. Llamada a tu API REST (Se ejecuta en el servidor)
+let users = [];
+try {
+  const response = await fetch('http://localhost:3000/api/users');
+  users = await response.json();
+} catch (error) {
+  console.error("Error conectando a la API:", error);
+}
+---
+
+<BaseLayout title="Listado de Usuarios">
+  <h1>Nuestros Usuarios</h1>
+  <p>Esta lista se genera en el servidor, pero los botones son islas interactivas.</p>
+
+  <div class="user-list">
+    {users.length > 0 ? (
+      users.map((u) => (
+        /* 2. Invocamos la Isla con la directiva 'client:load' */
+        /* Esto le dice a Astro: 'Envía el JS de este componente e hidrátalo' */
+		
+        <div class="user-row">
+			<UserCard client:load >
+			<a href={`/usuarios/${u.id}`}>
+				<strong>{u.name}</strong>
+			</a>
+			<p>{u.email}</p>
+			</UserCard>
+
+			
+		</div>
+      ))
+    ) : (
+      <p>No se encontraron usuarios o la API está caída.</p>
+    )}
+  </div>
+</BaseLayout>

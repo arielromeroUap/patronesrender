@@ -1,0 +1,16 @@
+---
+const { title } = Astro.props;
+---
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <style>
+      body { font-family: system-ui; background: #f4f4f4; padding: 2rem; }
+      nav { margin-bottom: 2rem; border-bottom: 1px solid #ccc; padding-bottom: 1rem; }
+    </style>
+  </head>
+  <body>
+    <nav><strong>Mi App de Usuarios</strong></nav>
+    <slot /> </body>
+</html>
