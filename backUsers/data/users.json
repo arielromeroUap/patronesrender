@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Juan Perez",
+    "email": "juan@example.com",
+    "photo": "https://i.pravatar.cc/150?u=19",
+    "birthdate": "1981-01-09"
+  },
+  {
+    "id": 2,
+    "name": "Melisa Johnson",
+    "email": "melissa.johnson@gmail.com",
+    "photo": "https://i.pravatar.cc/150?u=20",
+    "birthdate": "2003-05-15"
+  },
+  {
+    "id": 3,
+    "name": "Erick Terrel",
+    "email": "jeric@terrel.net",
+    "photo": "https://i.pravatar.cc/150?u=24",
+    "birthdate": "2005-03-21"
+  },
+  {
+    "id": 4,
+    "name": "Maria Ramos",
+    "email": "maria.ramos@uap.edu.ar",
+    "photo": "https://i.pravatar.cc/150?u=29",
+    "createdAt": "2026-04-13T15:09:13.606Z"
+  },
+  {
+    "id": 5,
+    "name": "Samuel Olmos",
+    "email": "samuel.olmos@uap.edu.ar",
+    "photo": "https://i.pravatar.cc/150?u=35",
+    "createdAt": "2026-04-13T19:45:16.448Z"
+  }
+]

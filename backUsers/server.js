@@ -1,14 +1,20 @@
+//require('dotenv').config();
 const express = require('express');
 const cors = require('cors'); // Importar CORS
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 const PORT = 3000;
 app.use(cors()); // Permitir peticiones desde otros dominios (tu app de React)
-// 1. Modelo de Datos (Simulado)
+app.use(express.json());
+// Rutas
+app.use('/api/users', userRoutes);
+
+/* 1. Modelo de Datos (Simulado)
 const users = [
-  { id: 1, name: "Samuel Olmos (Server)", email: "Sincere@april.biz" },
-  { id: 2, name: "Evelyn Inostroza (Server)", email: "Shanna@melissa.tv" },
-  { id: 3, name: "Enzo Marin (Server)", email: "Nathan@yesenia.net" }
+  { id: 1, name: "Juan Perez", email: "juan.perez@gmail.com", foto: 'https://i.pravatar.cc/150?u=19' },
+  { id: 2, name: "Melisa Johnson", email: "melissa.johnson@gmail.com", foto: 'https://i.pravatar.cc/150?u=20' },
+  { id: 3, name: "Erick Terrel", email: "eric@terrel.net", foto: 'https://i.pravatar.cc/150?u=24' }
 ];
 
 // 2. Endpoint de API (Para el ejemplo de CSR)
@@ -72,7 +78,7 @@ app.get('/ssr-demo', (req, res) => {
 
   res.send(fullHtml);
 });
-
+*/
 app.listen(PORT, () => {
   console.log(`🚀 Servidor de clase corriendo en http://localhost:${PORT}`);
   console.log(`🔗 Prueba SSR real en: http://localhost:${PORT}/ssr-demo`);
